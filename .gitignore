@@ -1,0 +1,19 @@
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment
+venv/
+.venv/
+env/  # Add this line if your virtual environment is named "env"
+
+# Ignore SQLite database
+db.sqlite3
+
+# Ignore environment variables
+.env
+
+# Ignore Django migrations cache
+**/migrations/*
+!**/migrations/__init__.py
