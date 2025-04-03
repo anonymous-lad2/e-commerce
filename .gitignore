@@ -17,3 +17,5 @@ db.sqlite3
 # Ignore Django migrations cache
 **/migrations/*
 !**/migrations/__init__.py
+.env
+.env
