@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'store',
+    'django_extensions',
 
     # Default django apps.
     'django.contrib.admin',
