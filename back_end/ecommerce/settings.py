@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'store',
     'django_extensions',
+    'corsheaders',
 
     # Default django apps.
     'django.contrib.admin',
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
@@ -149,3 +151,9 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+
+CORS_ALLOWED_ORIGINS = [
+    # React app running locally
+    "http://localhost:3000"
+]

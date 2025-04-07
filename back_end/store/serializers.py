@@ -4,6 +4,7 @@ from .models import Product, Order
 from .constants import ORDER_STATUS_CHOICES, PAYMENT_METHOD_CHOICES
 
 
+
 class ProductSerializer(serializers.ModelSerializer):
     name = serializers.CharField(max_length=30)
     category = serializers.CharField(max_length=30)
@@ -44,3 +45,4 @@ class OrderSerializer(serializers.ModelSerializer):
             " greater than 10%.")
         if value < 0:
             raise serializers.ValidationError("Discount cannot be negative.")
+        
