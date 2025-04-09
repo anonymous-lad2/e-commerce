@@ -30,7 +30,6 @@ class OrderSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     payment_method = serializers.ChoiceField(choices=PAYMENT_METHOD_CHOICES)
     order_date = serializers.DateTimeField()
-    tracking_number = serializers.CharField(max_length=30)
     discount = serializers.DecimalField(max_digits=5, decimal_places=2)
     payment_status = serializers.ChoiceField(choices=ORDER_STATUS_CHOICES)
 

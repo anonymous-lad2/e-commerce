@@ -5,7 +5,7 @@ from .constants import ORDER_STATUS_CHOICES, PAYMENT_METHOD_CHOICES
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    category = models.CharField(max_length=30, default='uncategorized')
+    category = models.CharField(max_length=30, blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     stock = models.IntegerField()
@@ -28,6 +28,7 @@ class Order(models.Model):
     payment_method = models.CharField(max_length=20,
                                        choices=PAYMENT_METHOD_CHOICES,
                                        default='credit_card')
+    payment_status = models.CharField(max_length=20, default="pending")
     discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
 
     def __str__(self):

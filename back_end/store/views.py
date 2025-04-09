@@ -26,10 +26,51 @@ class OrderViewSet(viewsets.ModelViewSet):
     # Custom action to update order status
     @action(detail=True, methods=['patch'])
     def update_status(self, request, pk=None):
-        order = self.get_object()
+        """
+        Custom action to update the status of an order.
+        This action allows an authenticated user (typically an admin) to update the 
+        status of an existing order.
+
+        Args:
+        request (Request): Contains the new 'status' in the request body.
+        pk (int): The primary key (ID) of the order to update.
+
+        Returns:
+        Response: A response containing the updated order status.
+        
+        Response Example (Success):
+        {
+        "status": "shipped"
+        }
+
+        Response Example (Failure):
+        {
+        "error": "Invalid status value."
+        }
+        """
+
+        # Retrieve the order based on the provided pk
+        order = self.get_object() 
+
+        # Update the order's status with the status provided in request body,
+        # defaulting to current status
         order.status = request.data.get('status', order.status)
-        order.save()
+        
+        # Save the updated order to the database
+        order.save()  
+
+        # Return the udpated status in the response
         return Response({'status': order.status})
+                                                   
 
 def index(request):
+    """
+    A simple view for the store app's index page.
+    
+    Returns:
+        HttpResponse: A basic response indicating the app is running.
+    
+    Response Example:
+    "Hello from the store app!"
+    """
     return HttpResponse("Hello from the store app!")
