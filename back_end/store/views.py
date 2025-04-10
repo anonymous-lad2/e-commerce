@@ -20,8 +20,8 @@ class OrderViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]  # Auth required
 
     def perform_create(self, serializer):
-        # Auto-assign the logged-in user.
-        serializer.save(user=self.request.user)
+        # Auto-assign the logged-in user
+        serializer.save()
 
     # Custom action to update order status
     @action(detail=True, methods=['patch'])

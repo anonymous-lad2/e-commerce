@@ -30,13 +30,28 @@ class OrderSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     payment_method = serializers.ChoiceField(choices=PAYMENT_METHOD_CHOICES)
     order_date = serializers.DateTimeField()
-    discount = serializers.DecimalField(max_digits=5, decimal_places=2)
+    discount = serializers.DecimalField(max_digits=5, decimal_places=2, 
+                                        required=False, default=0.0)
     payment_status = serializers.ChoiceField(choices=ORDER_STATUS_CHOICES)
 
  
     class Meta:
         model = Order
         fields = '__all__'
+    
+
+    def create(self, validated_data):
+        # Get the logged-in user
+        user = self.context['request'].user
+        
+        # Inject user into validated data
+        validated_data['user'] = user
+
+        # Ensure discount is set to 0.0 if not provided
+        if 'discount' not in validated_data:
+            validated_data['discount'] = 0.0
+            
+        return super().create(validated_data)
     
     def validate_discount(self, value):
         if value > 0.1:

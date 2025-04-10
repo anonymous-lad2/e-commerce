@@ -29,7 +29,8 @@ class Order(models.Model):
                                        choices=PAYMENT_METHOD_CHOICES,
                                        default='credit_card')
     payment_status = models.CharField(max_length=20, default="pending")
-    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0.0,
+                                   null=True)
 
     def __str__(self):
         return f"Order {self.id} - {self.status}"
