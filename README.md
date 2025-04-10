@@ -6,7 +6,7 @@
   <img src="https://jwt.io/img/logo-asset.svg" width="100" style="background:#000;padding:10px;border-radius:5px">
 </div>
 
-## 🚀 Quick Start
+🚀 Quick Start
 ```bash
 git clone https://github.com/anonymous-lad2/e-commerce.git
 cd e-commerce/back_end
@@ -16,7 +16,8 @@ source env/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
----
+```
+
 🔐 Authentication Flow
 mermaid
 Copy
@@ -28,13 +29,14 @@ sequenceDiagram
     API->>User: JWT Tokens
     User->>API: Authorization: Bearer <token>
     API->>User: Protected Data
----
+
 🌐 API Endpoints
 Endpoint	Method	Description	Auth Required
 /api/auth/	POST	Obtain JWT tokens	❌ No
 /api/products/	GET	List all products	❌ No
 /api/orders/	POST	Create new order	✅ Yes
 /api/users/me/	GET	Get user profile	✅ Yes
+
 🔧 Developer Tools
 bash
 Copy
@@ -49,7 +51,7 @@ Copy
 Edit
 from store.factories import ProductFactory
 ProductFactory.create_batch(5)
----
+
 📦 Project Structure
 bash
 Copy
@@ -65,7 +67,7 @@ e-commerce/
     │   └── serializers/ # Data transformers
     ├── manage.py        # Django CLI
     └── pytest.ini       # Pytest config
----
+
 📜 License
 MIT © Pablo727
----
+
