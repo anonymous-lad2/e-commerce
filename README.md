@@ -16,8 +16,11 @@ source env/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-
-## 🔐 Authentication Flow
+---
+🔐 Authentication Flow
+mermaid
+Copy
+Edit
 sequenceDiagram
     participant User
     participant API
@@ -25,35 +28,44 @@ sequenceDiagram
     API->>User: JWT Tokens
     User->>API: Authorization: Bearer <token>
     API->>User: Protected Data
+---
+🌐 API Endpoints
+Endpoint	Method	Description	Auth Required
+/api/auth/	POST	Obtain JWT tokens	❌ No
+/api/products/	GET	List all products	❌ No
+/api/orders/	POST	Create new order	✅ Yes
+/api/users/me/	GET	Get user profile	✅ Yes
+🔧 Developer Tools
+bash
+Copy
+Edit
+./dev_tools.sh djcheck  # Run custom Django checks
+pytest                  # Run all tests
+python manage.py shell  # Open Django shell
+Example for test data in shell:
 
-## 🌐 API Endpoints
-
-| Endpoint           | Method | Description              | Auth Required |
-|--------------------|--------|--------------------------|---------------|
-| `/api/auth/`       | POST   | Get JWT tokens           | ❌            |
-| `/api/products/`   | GET    | List all products        | ❌            |
-| `/api/orders/`     | POST   | Create new order         | ✅            |
-| `/api/users/me/`   | GET    | Get user profile         | ✅            |
-
-## 🔧 Developer Tools
-./dev_tools.sh djcheck  # Custom checks
-pytest  # Run all tests
-python manage.py shell  # Test data:
->>> from store.factories import ProductFactory
->>> ProductFactory.create_batch(5)
-
-## 📦 Project Structure
+python
+Copy
+Edit
+from store.factories import ProductFactory
+ProductFactory.create_batch(5)
+---
+📦 Project Structure
+bash
+Copy
+Edit
 e-commerce/
 └── back_end/
-    ├── ecommerce/       # Config
+    ├── ecommerce/       # Django project config
     ├── store/           # Main app
-    │   ├── migrations/  # DB
-    │   ├── tests/       # Tests
-    │   ├── models.py    # Models
-    │   ├── views.py     # Logic
-    │   └── serializers/ # Transformers
-    ├── manage.py        # CLI
-    └── pytest.ini       # Test config
-
-## 📜 License
-MIT © [Pablo727](https://github.com/pablo727)
+    │   ├── migrations/  # Database migrations
+    │   ├── tests/       # Test suite
+    │   ├── models.py    # Data models
+    │   ├── views.py     # Business logic
+    │   └── serializers/ # Data transformers
+    ├── manage.py        # Django CLI
+    └── pytest.ini       # Pytest config
+---
+📜 License
+MIT © Pablo727
+---
