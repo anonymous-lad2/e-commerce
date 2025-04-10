@@ -17,8 +17,7 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
-🔐 Authentication Flow
-```mermaid
+### 🔐 Authentication Flow
 sequenceDiagram
     participant User
     participant API
@@ -26,9 +25,8 @@ sequenceDiagram
     API->>User: JWT Tokens
     User->>API: Authorization: Bearer <token>
     API->>User: Protected Data
-```
 
-🌐 API Endpoints
+### 🌐 API Endpoints
 
 Endpoint	Method	Description	Auth
 /api/auth/	POST	Get JWT tokens	    ❌
@@ -36,16 +34,14 @@ Endpoint	Method	Description	Auth
 /api/orders/	POST	Create order	✅
 /api/users/me/	GET	User profile	    ✅
 
-🔧 Developer Tools
-```bash
+### 🔧 Developer Tools
 ./dev_tools.sh djcheck  # Custom checks
 pytest  # Run all tests
 python manage.py shell  # Test data:
 >>> from store.factories import ProductFactory
 >>> ProductFactory.create_batch(5)
-```
 
-📦 Project Structure
+### 📦 Project Structure
 e-commerce/
 └── back_end/
     ├── ecommerce/       # Config
@@ -58,8 +54,8 @@ e-commerce/
     ├── manage.py        # CLI
     └── pytest.ini       # Test config
 
-📜 License
-MIT © Pablo727
+### 📜 License
+MIT © [Pablo727](https://github.com/pablo727)
 
 
 
