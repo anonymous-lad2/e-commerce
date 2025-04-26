@@ -31,12 +31,13 @@ sequenceDiagram
     API->>User: Protected Data
 ```
 ## 🌐 API Endpoints
+```bash
 Endpoint	Method	Description	Auth Required
 /api/auth/	POST	Obtain JWT tokens	❌ No
 /api/products/	GET	List all products	❌ No
 /api/orders/	POST	Create new order	✅ Yes
 /api/users/me/	GET	Get user profile	✅ Yes
-
+```
 ## 🔧 Developer Tools
 ```bash
 Copy
