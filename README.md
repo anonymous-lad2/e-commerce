@@ -19,7 +19,7 @@ python manage.py runserver
 ```
 
 ## 🔐 Authentication Flow
-```mermaid
+```bash
 Copy
 Edit
 sequenceDiagram
