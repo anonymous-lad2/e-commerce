@@ -19,7 +19,7 @@ python manage.py runserver
 ```
 
 ## 🔐 Authentication Flow
-mermaid
+```mermaid
 Copy
 Edit
 sequenceDiagram
@@ -29,7 +29,7 @@ sequenceDiagram
     API->>User: JWT Tokens
     User->>API: Authorization: Bearer <token>
     API->>User: Protected Data
-
+```
 ## 🌐 API Endpoints
 Endpoint	Method	Description	Auth Required
 /api/auth/	POST	Obtain JWT tokens	❌ No
@@ -38,22 +38,23 @@ Endpoint	Method	Description	Auth Required
 /api/users/me/	GET	Get user profile	✅ Yes
 
 ## 🔧 Developer Tools
-bash
+```bash
 Copy
 Edit
 ./dev_tools.sh djcheck  # Run custom Django checks
 pytest                  # Run all tests
 python manage.py shell  # Open Django shell
+```
 Example for test data in shell:
 
-python
+```python
 Copy
 Edit
 from store.factories import ProductFactory
 ProductFactory.create_batch(5)
-
+```
 ## 📦 Project Structure
-bash
+```bash
 Copy
 Edit
 e-commerce/
@@ -67,7 +68,7 @@ e-commerce/
     │   └── serializers/ # Data transformers
     ├── manage.py        # Django CLI
     └── pytest.ini       # Pytest config
-
+```
 ## 📜 License
 MIT © Pablo727
 
